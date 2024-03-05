@@ -274,7 +274,7 @@ cat > /usr/local/etc/xray/config.json <<-EOF
   "log": {
     "access": "/var/log/xray/access.log",
     "error": "/var/log/xray/error.log",
-    # "loglevel": "warning"
+    // "loglevel": "warning"
     "loglevel": "none"
   },
   "dns": {
@@ -363,15 +363,15 @@ cat > /usr/local/etc/xray/config.json <<-EOF
       "tag": "block"
     }
   ],
-  # "dns": {
-  #   "servers": [
-  #     "8.8.8.8",
-  #     "1.1.1.1",
-  #     "2001:4860:4860::8888",
-  #     "2606:4700:4700::1111",
-  #     "localhost"
-  #   ]
-  # },
+//   "dns": {
+//     "servers": [
+//       "8.8.8.8",
+//       "1.1.1.1",
+//       "2001:4860:4860::8888",
+//       "2606:4700:4700::1111",
+//       "localhost"
+//     ]
+//   },
   "routing": {
     "domainStrategy": "IPIfNonMatch",
     "rules": [
