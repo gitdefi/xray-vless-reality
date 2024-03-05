@@ -83,8 +83,9 @@ fi
 pause
 
 # 准备工作
-apt update
-apt install -y curl sudo jq qrencode
+# apt update && apt -y install curl wget tar socat jq git openssl uuid-runtime build-essential zlib1g-dev libssl-dev libevent-dev dnsutils cron
+
+apt update && apt install -y curl sudo jq qrencode openssl
 
 # Xray官方脚本 安装最新版本
 echo
@@ -106,7 +107,7 @@ if [[ -n $uuid ]]; then
   public_key=$(echo ${tmp_key} | awk '{print $6}')
 
   #ShortID
-  shortid=$(echo -n ${uuid} | sha1sum | head -c 16)
+  shortid=$(openssl rand -hex 8)
   
   echo
   echo "私钥公钥要在安装xray之后才可以生成"
@@ -227,7 +228,7 @@ fi
 
 # ShortID
 if [[ -z $shortid ]]; then
-  default_shortid=$(echo -n ${uuid} | sha1sum | head -c 16)
+  default_shortid=$(openssl rand -hex 8)
   while :; do
     echo -e "请输入 "$yellow"ShortID"$none" :"
     read -p "$(echo -e "(默认ShortID: ${cyan}${default_shortid}$none):")" shortid
